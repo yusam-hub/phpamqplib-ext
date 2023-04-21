@@ -68,11 +68,24 @@ class RabbitMqConnection
     }
 
     /**
-     * @param string $queueName
+     * @param string $exchangeName
+     * @param string $routingKey
+     * @param array $messageProperties
+     * @param bool $messageMandatory
+     * @param bool $messageImmediate
+     * @param int|null $messageTicket
      * @param string|null $producerName
      * @return RabbitMqProducer
      */
-    public function newProducer(string $queueName, ?string $producerName = null): RabbitMqProducer
+    public function newProducer(
+        string $exchangeName,
+        string $routingKey,
+        array $messageProperties = [],
+        bool $messageMandatory = false,
+        bool $messageImmediate = false,
+        ?int $messageTicket = null,
+        ?string $producerName = null
+    ): RabbitMqProducer
     {
         if (empty($producerName)) {
             $producerName = $this->phpAmqpLibExt->producerDefault;
@@ -80,7 +93,16 @@ class RabbitMqConnection
 
         $this->phpAmqpLibExt->debugLog(sprintf("Setup producer [ %s ]", $producerName));
 
-        return new RabbitMqProducer($this, $queueName, $this->phpAmqpLibExt->producers[$producerName]);
+        return new RabbitMqProducer(
+            $this,
+            $this->phpAmqpLibExt->producers[$producerName],
+            $exchangeName,
+            $routingKey,
+            $messageProperties,
+            $messageMandatory,
+            $messageImmediate,
+            $messageTicket
+        );
     }
 
 
