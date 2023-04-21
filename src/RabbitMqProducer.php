@@ -32,7 +32,6 @@ class RabbitMqProducer
 
         $this->amqpStreamConnection = $this->rabbitMqConnection->newAMQPStreamConnection();
 
-
         $this->rabbitMqConnection->getPhpAmqpLibExt()->debugLog("Open channel");
 
         $this->amqpChannel = $this->amqpStreamConnection->channel();
@@ -83,7 +82,6 @@ class RabbitMqProducer
 
         $this->amqpStreamConnection->close();
     }
-
 
 
     /**
