@@ -7,7 +7,7 @@
         "php": "^7.4|^8.0|^8.1|^8.2",
         "ext-sockets": "*",
         "ext-json": "*",
-        "php-amqplib/php-amqplib": "*"
+        "php-amqplib/php-amqplib": "^3"
     },
     "require-dev": {
         "phpunit/phpunit": "*"

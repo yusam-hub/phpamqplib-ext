@@ -5,7 +5,7 @@
 
     docker exec -it yusam-php74 sh -c "apk add php-sockets"
     docker exec -it yusam-php74 sh -c "cd /var/www/data/yusam/github/yusam-hub/phpamqplib-ext && composer update"
+    docker exec -it yusam-php74 sh -c "cd /var/www/data/yusam/github/yusam-hub/phpamqplib-ext/bin && php consumer.php"
     docker exec -it yusam-php74 sh -c "cd /var/www/data/yusam/github/yusam-hub/phpamqplib-ext && sh phpunit"
-
 
 

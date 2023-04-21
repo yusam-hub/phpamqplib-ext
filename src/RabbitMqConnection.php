@@ -105,4 +105,15 @@ class RabbitMqConnection
             $messageTicket
         );
     }
+
+    /**
+     * @param array $config
+     * @return RabbitMqConsumer
+     */
+    public function newConsumer(array $config): RabbitMqConsumer
+    {
+        $this->phpAmqpLibExt->debugLog("Setup consumer", $config);
+
+        return new RabbitMqConsumer($this, $config);
+    }
 }
