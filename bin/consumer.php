@@ -23,7 +23,7 @@ $consumer = $phpAmqpLibExt->getConnection()->newConsumer([
 
 $callback = function (\PhpAmqpLib\Message\AMQPMessage $message) use($phpAmqpLibExt, &$messageCounter) {
     $messageCounter++;
-    $phpAmqpLibExt->debugLog(sprintf("[ %d ] Incoming message: [ %s ]", $messageCounter, $message->getBody()));
+    $phpAmqpLibExt->debugLog(sprintf("[ %d | %s ] Incoming message: [ %s ]", $messageCounter, date("Y-m-d H:i:s"), $message->getBody()));
     $message->ack();
 };
 
