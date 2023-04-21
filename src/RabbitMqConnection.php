@@ -76,6 +76,7 @@ class RabbitMqConnection
      * @param int|null $messageTicket
      * @param string|null $producerName
      * @return RabbitMqProducer
+     * @throws \Exception
      */
     public function newProducer(
         string $exchangeName,
