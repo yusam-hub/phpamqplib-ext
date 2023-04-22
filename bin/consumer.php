@@ -15,8 +15,8 @@ $config = [
     'exchangeArguments' => [
         //'x-delayed-type' => \PhpAmqpLib\Exchange\AMQPExchangeType::TOPIC,
     ],
-    'queueName' => $argv[1]??'queue1',
-    'consumerTag' => $argv[2]??'consumerTag1',
+    'queueName' => $argv[1]??'queue0',
+    'consumerTag' => $argv[2]??'tag0',
     'routingKeys' => [
         'route1'
     ]
