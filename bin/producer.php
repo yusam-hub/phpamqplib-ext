@@ -9,8 +9,8 @@ require_once(__DIR__ . "/../vendor/autoload.php");
 $phpAmqpLibExt = new PhpAmqpLibExt(require __DIR__ . '/../config/config.php');
 
 $producer = $phpAmqpLibExt->getConnection()->newProducer(
-    'message_informer_delay',
-    'informer_delay.message.sending_push_messages',
+    'exchange1',
+    'route1',
     [
         'delivery_mode' => AMQPMessage::DELIVERY_MODE_PERSISTENT,
         'application_headers' => new AMQPTable([

@@ -8,22 +8,24 @@ $phpAmqpLibExt = new PhpAmqpLibExt(require __DIR__ . '/../config/config.php');
 
 $messageCounter = 0;
 
-$consumer = $phpAmqpLibExt->getConnection()->newConsumer([
-    'exchangeName' => 'message_informer_delay',
-    'exchangeType' => 'x-delayed-message',
+$config = [
+    'exchangeName' => 'exchange1',
+    'exchangeType' => \PhpAmqpLib\Exchange\AMQPExchangeType::TOPIC,
+    //'exchangeType' => 'x-delayed-message',
     'exchangeArguments' => [
-        'x-delayed-type' => \PhpAmqpLib\Exchange\AMQPExchangeType::TOPIC,
+        //'x-delayed-type' => \PhpAmqpLib\Exchange\AMQPExchangeType::TOPIC,
     ],
-    'queueName' => 'informer_delay_sending_push_messages',
-    'consumerTag' => 'sending_push_messages',
+    'queueName' => $argv[1]??'queue1',
+    'consumerTag' => $argv[2]??'consumerTag1',
     'routingKeys' => [
-        'informer_delay.message.sending_push_messages'
+        'route1'
     ]
-]);
+];
 
-$callback = function (\PhpAmqpLib\Message\AMQPMessage $message) use($phpAmqpLibExt, &$messageCounter) {
-    $messageCounter++;
-    $phpAmqpLibExt->debugLog(sprintf("[ %d | %s ] Incoming message: [ %s ]", $messageCounter, date("Y-m-d H:i:s"), $message->getBody()));
+$consumer = $phpAmqpLibExt->getConnection()->newConsumer($config);
+
+$callback = function (\PhpAmqpLib\Message\AMQPMessage $message) use($phpAmqpLibExt) {
+    $phpAmqpLibExt->debugLog(sprintf("[ %d | %s | %s ] Incoming message: [ %s ]", $message->getDeliveryTag(), date("Y-m-d H:i:s"), $message->getConsumerTag(), $message->getBody()));
     $message->ack();
 };
 

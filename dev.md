@@ -7,7 +7,8 @@
     docker exec -it yusam-php74 sh -c "cd /var/www/data/yusam/github/yusam-hub/phpamqplib-ext && composer update"
     docker exec -it yusam-php74 sh -c "cd /var/www/data/yusam/github/yusam-hub/phpamqplib-ext && sh phpunit"
 
-    docker exec -it yusam-php74 sh -c "cd /var/www/data/yusam/github/yusam-hub/phpamqplib-ext/bin && php consumer.php"
+    docker exec -it yusam-php74 sh -c "cd /var/www/data/yusam/github/yusam-hub/phpamqplib-ext/bin && php consumer.php queue1 tag1"
+    docker exec -it yusam-php74 sh -c "cd /var/www/data/yusam/github/yusam-hub/phpamqplib-ext/bin && php consumer.php queue1 tag2"
     docker exec -it yusam-php74 sh -c "cd /var/www/data/yusam/github/yusam-hub/phpamqplib-ext/bin && php producer.php"
 
 

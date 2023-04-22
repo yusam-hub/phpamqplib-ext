@@ -9,11 +9,11 @@ use PhpAmqpLib\Wire\AMQPTable;
 
 class RabbitMqConsumer
 {
-    protected string $exchangeName;
+    protected string $exchangeName  = '';
     protected string $exchangeType = AMQPExchangeType::TOPIC;
     protected array $exchangeArguments = [];
-    protected string $queueName;
-    protected string $consumerTag;
+    protected string $queueName = '';
+    protected string $consumerTag = '';
     protected array $routingKeys = [];
     protected int $countPerChannel = 10;
     protected RabbitMqConnection $rabbitMqConnection;
