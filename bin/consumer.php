@@ -10,10 +10,9 @@ $messageCounter = 0;
 
 $config = [
     'exchangeName' => 'exchange1',
-    'exchangeType' => \PhpAmqpLib\Exchange\AMQPExchangeType::TOPIC,
-    //'exchangeType' => 'x-delayed-message',
+    'exchangeType' => 'x-delayed-message',
     'exchangeArguments' => [
-        //'x-delayed-type' => \PhpAmqpLib\Exchange\AMQPExchangeType::TOPIC,
+        'x-delayed-type' => \PhpAmqpLib\Exchange\AMQPExchangeType::TOPIC,
     ],
     'queueName' => $argv[1]??'queue0',
     'consumerTag' => $argv[2]??'tag0',
