@@ -10,14 +10,14 @@
 
     "repositories": {
         ...
-        "yusam-hub/redis-ext": {
+        "yusam-hub/phpamqplib-ext": {
             "type": "git",
-            "url": "https://github.com/yusam-hub/redis-ext.git"
+            "url": "https://github.com/yusam-hub/phpamqplib-ext.git"
         }
         ...
     },
     "require": {
         ...
-        "yusam-hub/redis-ext": "dev-master"
+        "yusam-hub/phpamqplib-ext": "dev-master"
         ...
     }
